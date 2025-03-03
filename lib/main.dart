@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:w25_test_flutter/second_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'ABCDE'),
+      routes: {
+        '/second': (context) => const SecondPage()
+      },
     );
   }
 }
@@ -41,16 +45,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _counter = 0;
+  // double _counter = 0;
 
   var isChecked = false;
 
-  void _incrementCounter() {
-    setState(() {
+  // void _incrementCounter() {
+  //   setState(() {
       
-      _counter++;
-    });
-  }
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           OutlinedButton(onPressed: (){}, child: const Text("Button 1")),
           const SizedBox(width: 10.0),
-          OutlinedButton(onPressed: (){}, child: const Text("Button 2"))
+          OutlinedButton(onPressed: (){
+            Navigator.pushNamed(context, '/second');
+          }, child: const Text("Second Page"))
         ],
         
       ),
@@ -126,8 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
         BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Camera"),
         BottomNavigationBarItem(icon: Icon(Icons.add_call), label: 'Phone'),
       ], onTap: (btnIndex){
-        if(btnIndex == 0) print("Camera button pressed");
-        else print("Phone button pressed");
+        if(btnIndex == 0) {
+          // print("Camera button pressed");
+        } else {
+          // print("Phone button pressed");
+        }
       },), 
     );
   }
